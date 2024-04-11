@@ -1,0 +1,41 @@
+.contItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 320px;
+  font-weight: 400;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.textBoxWrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.iconArea {
+  min-width: 20px;
+  margin-right: 5px;
+}
+
+.spanThumb {
+  display: flex;
+  align-items: center;
+}
+
+.delButton {
+  height: 30px;
+  width: 80px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 2px 5px 2px 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: lightgrey;
+  border-color: black;
+  border-width: 2 px;
+  place-items: center;
+}
