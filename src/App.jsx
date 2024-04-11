@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className={css.phoneBookArea}>
       <Toaster position="top-right" toastOptions={{ duration: 1500 }} />
-      <h3 className={css.mainTitle}>Phonebook</h3>
+      <h3 className={css.mainTitle}>Phonebook goit-react-hw-08</h3>
       <ContactForm />
       <SearchBox />
       {isLoading && !error && (
