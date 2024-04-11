@@ -2,12 +2,12 @@ import { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import { fetchContacts } from './redux/contactsOps';
+import { fetchContacts } from './redux/contacts/operartions';
 import {
   selectIsLoading,
   selectError,
   selectContacts,
-} from './redux/contactsSlice';
+} from './redux/contacts/selectors';
 import ContactForm from './components/ContactForm/ContactForm';
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
@@ -15,6 +15,8 @@ import ContactList from './components/ContactList/ContactList';
 import './App.css';
 import css from './App.module.css';
 import { Loader } from './components/Loader/Loader';
+
+//Suspense - fallback розібратись
 
 const App = () => {
   const dispatch = useDispatch();
