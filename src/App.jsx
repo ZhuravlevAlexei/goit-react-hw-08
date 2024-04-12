@@ -15,9 +15,9 @@ import ContactForm from './components/ContactForm/ContactForm';
 
 import './App.css';
 import css from './App.module.css';
-// import { Loader } from './components/Loader/Loader';
-import { Layout } from './components/Layout/Layout';
-import { RestrictedRoute } from './components/RestrictedRoute/RestrictedRoute';
+// import Loader from './components/Loader/Loader';
+import Layout from './components/Layout/Layout';
+import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import HomePage from './pages/HomePage/HomePage';
 
 const App = () => {
@@ -36,16 +36,16 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route
+          <Route
             path="/register"
             element={
               <RestrictedRoute
-                redirectTo="/contacts"
+                redirectTo="/register"
                 // component={<RegisterPage />}
                 component={<ContactForm />}
               />
             }
-          /> */}
+          />
           {/* <Route
             path="/login"
             element={

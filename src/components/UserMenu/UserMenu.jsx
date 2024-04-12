@@ -3,7 +3,7 @@
 // import { selectUser } from '../../redux/auth/selectors';
 import css from './UserMenu.module.css';
 
-export const UserMenu = () => {
+const UserMenu = () => {
   // const dispatch = useDispatch();
   // const { user } = useSelector(selectUser);
 
@@ -18,3 +18,5 @@ export const UserMenu = () => {
     </div>
   );
 };
+
+export default UserMenu;

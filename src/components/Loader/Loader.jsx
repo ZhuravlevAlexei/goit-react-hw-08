@@ -1,6 +1,5 @@
 import { Vortex } from 'react-loader-spinner';
-
-export const Loader = () => {
+const Loader = () => {
   return (
     <Vortex
       visible={true}
@@ -13,3 +12,5 @@ export const Loader = () => {
     />
   );
 };
+
+export default Loader;
