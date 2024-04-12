@@ -11,6 +11,7 @@ const initialState = {
   isRefreshing: false,
 };
 
+// стане у пригоді
 // const handlePending = state => {
 //   state.loading = true;
 //   state.error = false;
