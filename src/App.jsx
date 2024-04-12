@@ -19,7 +19,7 @@ import css from './App.module.css';
 import Layout from './components/Layout/Layout';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import HomePage from './pages/HomePage/HomePage';
-
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 const App = () => {
   // const dispatch = useDispatch();
   // const contacts = useSelector(selectContacts);
@@ -41,8 +41,8 @@ const App = () => {
             element={
               <RestrictedRoute
                 redirectTo="/register"
-                // component={<RegisterPage />}
-                component={<ContactForm />}
+                component={<RegistrationPage />}
+                // component={<ContactForm />}
               />
             }
           />

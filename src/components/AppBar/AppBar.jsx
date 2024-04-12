@@ -6,10 +6,10 @@ import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import css from './AppBar.module.css';
 
 const AppBar = () => {
-  //comments for testing about {} why isLoggedIn undefined
-  // const { isLoggedIn } = useSelector(selectIsLoggedIn);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // comments for testing about {}
+  // const { isLoggedIn } = useSelector(selectIsLoggedIn); //why isLoggedIn undefined with {}
   // console.log('isLoggedIn AppBar: ', isLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <header className={css.header}>
