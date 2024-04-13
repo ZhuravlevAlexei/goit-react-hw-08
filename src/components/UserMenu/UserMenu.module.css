@@ -7,3 +7,8 @@
 .username {
   font-weight: 700;
 }
+
+.logoutBtn {
+  border-color: black;
+  border-width: 2 px;
+}

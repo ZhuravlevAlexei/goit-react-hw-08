@@ -2,10 +2,10 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operartions';
-import css from './RegistrationForm.module.css';
+import { login } from '../../redux/auth/operartions';
+import css from './LoginForm.module.css';
 
-const RegistrationForm = () => {
+const LoginForm = () => {
   const [passFieldType, setPassFieldType] = useState(true);
   const dispatch = useDispatch();
 
@@ -16,15 +16,7 @@ const RegistrationForm = () => {
       .matches(
         /^[a-zA-Z0-9_.-]{4,40}$/,
         'Username may contain only letters, numbers, underscores, dots.'
-      )
-      .required('Required'),
-    email: Yup.string()
-      .max(40, 'Must be max 40 characters or less')
-      .matches(
-        /^[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        'Enter a valid email address, for example "nJ8pN@example.com".'
-      )
-      .required('Required'),
+      ),
     password: Yup.string()
       .min(3, 'Must be at least 3 characters')
       .max(20, 'Must be max 20 characters or less')
@@ -37,8 +29,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values, actions) => {
     dispatch(
-      register({
-        name: values.username,
+      login({
         email: values.email,
         password: values.password,
       })
@@ -50,9 +41,8 @@ const RegistrationForm = () => {
   return (
     <Formik
       initialValues={{
-        username: '',
-        email: '',
-        password: '',
+        email: 'acrossall@mail.com',
+        password: 'examplepwd12345',
         // username: 'AlexCross',
         // email: 'acrossall@mail.com',
         // password: 'examplepwd12345',
@@ -62,28 +52,16 @@ const RegistrationForm = () => {
     >
       <Form className={css.form}>
         <label className={css.label}>
-          Username
-          <Field
-            className={css.input}
-            type="text"
-            name="username"
-            autoComplete="username"
-          />
-          <ErrorMessage className={css.error} name="username" component="p" />
-        </label>
-        <label className={css.label}>
           Email
           <Field className={css.input} type="email" name="email" />
           <ErrorMessage className={css.error} name="email" component="p" />
         </label>
-
-        <label className={css.passlabel}>Password</label>
         <div className={css.passArea}>
           <Field
             className={css.passInput}
             type={passFieldType ? 'password' : 'text'}
             name="password"
-            autoComplete="new-password"
+            autoComplete="common-password"
           />
           <button
             className={css.eyeBtn}
@@ -96,11 +74,11 @@ const RegistrationForm = () => {
         <ErrorMessage className={css.error} name="password" component="p" />
 
         <button className={css.btn} type="submit">
-          Register
+          Log in
         </button>
       </Form>
     </Formik>
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;

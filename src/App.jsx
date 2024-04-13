@@ -1,38 +1,47 @@
 import { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
+import { lazy } from 'react';
 
-// import { fetchContacts } from './redux/contacts/operartions';
-// import {
-//   selectIsLoading,
-//   selectError,
-//   selectContacts,
-// } from './redux/contacts/selectors';
-import ContactForm from './components/ContactForm/ContactForm';
-// import SearchBox from './components/SearchBox/SearchBox';
-// import ContactList from './components/ContactList/ContactList';
+import { refreshUser } from './redux/auth/operartions';
+import { selectIsRefreshing } from './redux/auth/selectors';
+import Loader from './components/Loader/Loader';
+import Layout from './components/Layout/Layout';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const RegistrationPage = lazy(() =>
+  import('./pages/RegistrationPage/RegistrationPage')
+);
+const PrivateRoute = lazy(() =>
+  import('./components/PrivateRoute/PrivateRoute')
+);
+const RestrictedRoute = lazy(() =>
+  import('./components/RestrictedRoute/RestrictedRoute')
+);
+const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
 import './App.css';
-import css from './App.module.css';
-// import Loader from './components/Loader/Loader';
-import Layout from './components/Layout/Layout';
-import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
-import HomePage from './pages/HomePage/HomePage';
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+
 const App = () => {
-  // const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
-    <div className={css.phoneBookArea}>
-      <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
+  return isRefreshing ? (
+    <>
+      <b>Refreshing user...</b>
+      <div>
+        <Loader />
+      </div>
+    </>
+  ) : (
+    <div>
+      <Toaster position="top-right" toastOptions={{ duration: 1500 }} />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -42,33 +51,25 @@ const App = () => {
               <RestrictedRoute
                 redirectTo="/register"
                 component={<RegistrationPage />}
-                // component={<ContactForm />}
               />
             }
           />
-          {/* <Route
+          <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
             }
-          /> */}
-          {/* <Route
-            path="/tasks"
+          />
+          <Route
+            path="/contacts"
             element={
-              <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
-          /> */}
+          />
         </Routes>
-        {/* <h3 className={css.mainTitle}>Phonebook goit-react-hw-08</h3>
-        <ContactForm />
-        <SearchBox />
-        {isLoading && !error && (
-          <div>
-            <Loader />
-          </div>
-        )}
-        {!isLoading && contacts.length === 0 && <b>No contacts added...</b>}
-        {contacts.length > 0 && <ContactList />} */}
       </Layout>
     </div>
   );

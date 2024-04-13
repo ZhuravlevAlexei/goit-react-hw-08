@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operartions';
 
@@ -35,6 +36,7 @@ const contactsSlice = createSlice({
         state.error = null;
         state.items.push(action.payload);
         state.items.sort((a, b) => a.name.localeCompare(b.name));
+        toast.success(`${action.payload.name} was added successfully!`);
       })
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
@@ -45,6 +47,9 @@ const contactsSlice = createSlice({
           contact => contact.id === action.payload.id
         );
         state.items.splice(index, 1);
+        toast.success(
+          `Contact ${action.payload.name} was deleted successfully!`
+        );
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
