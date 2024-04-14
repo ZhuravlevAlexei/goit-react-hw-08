@@ -26,8 +26,8 @@ const LoginForm = () => {
   return (
     <Formik
       initialValues={{
-        email: 'acrossall@mail.com',
-        password: 'examplepwd12345',
+        email: '',
+        password: '',
         // username: 'AlexCross',
         // email: 'acrossall@mail.com',
         // password: 'examplepwd12345',
