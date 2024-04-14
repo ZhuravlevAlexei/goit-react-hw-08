@@ -41,7 +41,7 @@ const App = () => {
     </>
   ) : (
     <div>
-      <Toaster position="top-right" toastOptions={{ duration: 1500 }} />
+      <Toaster position="top-right" toastOptions={{ duration: 2000 }} />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -1,6 +1,7 @@
 import { toast } from 'react-hot-toast';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operartions';
+import { logout } from '../auth/operartions';
 
 const initialState = {
   items: [],
@@ -51,7 +52,10 @@ const contactsSlice = createSlice({
           `Contact ${action.payload.name} was deleted successfully!`
         );
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(logout.fulfilled, state => {
+        state.items = [];
+      });
   },
 });
 
