@@ -1,6 +1,10 @@
 import { ErrorMessage, Field, Form } from 'formik';
 import css from './formikTemplates.module.css';
-export function contactFormTemplate() {
+export function contactFormTemplate(
+  showAddButton = true,
+  showEditButton = false,
+  closeEditModal
+) {
   return (
     <Form className={css.contactForm}>
       <label className={css.contactLabel}>
@@ -17,17 +21,24 @@ export function contactFormTemplate() {
           name="number"
         />
       </label>
+      {showAddButton && (
+        <div className={css.buttonWrapper}>
+          <button className={css.addBtn} type="submit">
+            Add contact
+          </button>
+        </div>
+      )}
+      {showEditButton && (
+        <div className={css.modalBtnWrap}>
+          <button className={css.delButton} type="submit">
+            Done
+          </button>
+          <button className={css.delButton} onClick={() => closeEditModal()}>
+            Cancel
+          </button>
+        </div>
+      )}
     </Form>
-  );
-}
-
-export function addButtonTemplate() {
-  return (
-    <div className={css.buttonWrapper}>
-      <button className={css.addBtn} type="submit">
-        Add contact
-      </button>
-    </div>
   );
 }
 

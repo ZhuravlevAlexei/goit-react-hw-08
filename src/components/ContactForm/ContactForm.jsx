@@ -3,10 +3,7 @@ import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { contactValSchema } from '../../service/validationSchemas';
-import {
-  addButtonTemplate,
-  contactFormTemplate,
-} from '../../service/formikTemplates/formikTemplates';
+import { contactFormTemplate } from '../../service/formikTemplates/formikTemplates';
 
 import { addContact } from '../../redux/contacts/operartions';
 import { selectContacts } from '../../redux/contacts/selectors';
@@ -41,7 +38,6 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
     >
       {contactFormTemplate}
-      {/* {addButtonTemplate} */}
     </Formik>
   );
 };

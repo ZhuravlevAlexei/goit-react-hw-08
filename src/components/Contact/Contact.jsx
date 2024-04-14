@@ -2,35 +2,38 @@ import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 import Modal from 'react-modal';
-import css from './Contact.module.css';
 import { useState } from 'react';
+
 import { contactValSchema } from '../../service/validationSchemas';
 import { contactFormTemplate } from '../../service/formikTemplates/formikTemplates';
+import { deleteContact, udateContact } from '../../redux/contacts/operartions';
 
-const Contact = ({ id, name, number, deleteContact }) => {
+import css from './Contact.module.css';
+
+const Contact = ({ id, name, number }) => {
   const [modalDellIsOpen, setModalDelIsOpen] = useState(false);
-  const [modalEditlIsOpen, setModaEditlDelIsOpen] = useState(false);
+  const [modalEditlIsOpen, setModaEditlIsOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const closeEditModal = answer => {
-    setModaEditlDelIsOpen(false);
-    // if (answer) dispatch(editContact({ id, name, number }));
-  };
-
-  const closeModal = answer => {
+  const closeDelModal = answer => {
     setModalDelIsOpen(false);
     if (answer) dispatch(deleteContact(id));
   };
+
+  const closeEditModal = () => {
+    setModaEditlIsOpen(false);
+  };
+
   const handleDelete = () => {
     setModalDelIsOpen(true);
   };
   const handleEdit = () => {
-    setModaEditlDelIsOpen(true);
+    setModaEditlIsOpen(true);
   };
 
-  const handleSubmit = (values, actions) => {
-    // dispatch(editContact({ id, name: values.name, number: values.number }));
-    actions.resetForm();
+  const handleSubmitEditModal = ({ name, number }) => {
+    dispatch(udateContact({ id, name, number }));
+    setModaEditlIsOpen(false);
   };
 
   Modal.setAppElement('#root');
@@ -44,10 +47,16 @@ const Contact = ({ id, name, number, deleteContact }) => {
         <div className={css.modal}>
           <p>Are sure you want to delete {name} contact?</p>
           <div className={css.modalBtnWrap}>
-            <button className={css.delButton} onClick={() => closeModal(true)}>
+            <button
+              className={css.delButton}
+              onClick={() => closeDelModal(true)}
+            >
               Yes
             </button>
-            <button className={css.delButton} onClick={() => closeModal(false)}>
+            <button
+              className={css.delButton}
+              onClick={() => closeDelModal(false)}
+            >
               No
             </button>
           </div>
@@ -56,36 +65,23 @@ const Contact = ({ id, name, number, deleteContact }) => {
       <Modal
         className={css.modalOverlay}
         isOpen={modalEditlIsOpen}
-        contentLabel="Delete contact"
+        contentLabel="Edit contact"
       >
         <div className={css.modal}>
+          <p>Edit contact</p>
           <Formik
             initialValues={{
-              name: '',
-              number: '',
+              name: name,
+              number: number,
             }}
             validationSchema={contactValSchema}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitEditModal}
           >
-            {contactFormTemplate}
+            {contactFormTemplate(false, true, closeEditModal)}
           </Formik>
-
-          <div className={css.modalBtnWrap}>
-            <button
-              className={css.delButton}
-              onClick={() => closeEditModal(true)}
-            >
-              Done
-            </button>
-            <button
-              className={css.delButton}
-              onClick={() => closeEditModal(false)}
-            >
-              Cancel
-            </button>
-          </div>
         </div>
       </Modal>
+
       <li className={css.contItem}>
         <div className={css.textBoxWrap}>
           <span className={css.spanThumb}>
