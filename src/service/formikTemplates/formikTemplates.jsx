@@ -29,7 +29,7 @@ export function contactFormTemplate(
         </div>
       )}
       {showEditButton && (
-        <div className={css.modalBtnWrap}>
+        <div className={css.buttonWrapper}>
           <button className={css.delButton} type="submit">
             Done
           </button>

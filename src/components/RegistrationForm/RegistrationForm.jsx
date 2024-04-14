@@ -26,7 +26,6 @@ const RegistrationForm = () => {
   };
 
   return (
-    // <></>
     <Formik
       initialValues={{
         username: '',

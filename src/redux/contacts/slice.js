@@ -47,11 +47,12 @@ const contactsSlice = createSlice({
       .addCase(addContact.rejected, handleRejected)
       .addCase(udateContact.pending, handlePending)
       .addCase(udateContact.fulfilled, (state, action) => {
-        console.log('state: ', state);
-        // console.log('action: ', action);
         state.loading = false;
         state.error = null;
-        // state.items.push(action.payload);
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        state.items[index] = action.payload;
         state.items.sort((a, b) => a.name.localeCompare(b.name));
         toast.success(
           `Contact ${action.payload.name} was updated successfully!`

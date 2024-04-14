@@ -12,11 +12,6 @@
   place-items: center;
 }
 
-.modalBtnWrap {
-  display: flex;
-  justify-content: center;
-}
-
 .contactForm {
   width: 350px;
   border: 2px solid black;
