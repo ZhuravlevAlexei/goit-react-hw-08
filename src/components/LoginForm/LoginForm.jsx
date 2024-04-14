@@ -28,9 +28,14 @@ const LoginForm = () => {
       initialValues={{
         email: '',
         password: '',
-        // username: 'AlexCross',
+        //work with
         // email: 'acrossall@mail.com',
         // password: 'examplepwd12345',
+        // username: 'AlexCross',
+        //once to test registration
+        // email: 'fastal@shine.ua',
+        // password: '1234567',
+        // username: 'AlexFast',
       }}
       validationSchema={loginValSchema}
       onSubmit={handleSubmit}

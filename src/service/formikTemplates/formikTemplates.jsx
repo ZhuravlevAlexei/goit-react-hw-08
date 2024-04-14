@@ -69,6 +69,8 @@ export function loginFormTemplate(passFieldType, onShowPass) {
   );
 }
 
+//
+
 export function registerFormTemplate(passFieldType, onShowPass) {
   return (
     <Form className={css.form}>
