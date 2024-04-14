@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { contactValSchema } from '../../service/validationSchemas';
 import { contactFormTemplate } from '../../service/formikTemplates/formikTemplates';
-import { deleteContact, udateContact } from '../../redux/contacts/operartions';
+import { deleteContact, udateContact } from '../../redux/contacts/operations';
 
 import css from './Contact.module.css';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/auth/operartions';
+import { login } from '../../redux/auth/operations';
 import { loginValSchema } from '../../service/validationSchemas';
 import { loginFormTemplate } from '../../service/formikTemplates/formikTemplates';
 

@@ -5,8 +5,8 @@ import {
   addContact,
   udateContact,
   deleteContact,
-} from './operartions';
-import { logout } from '../auth/operartions';
+} from './operations';
+import { logout } from '../auth/operations';
 
 const initialState = {
   items: [],

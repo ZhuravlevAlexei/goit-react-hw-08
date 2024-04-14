@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, lazy } from 'react';
-import { fetchContacts } from '../../redux/contacts/operartions';
+import { fetchContacts } from '../../redux/contacts/operations';
 import {
   selectIsLoading,
   selectError,

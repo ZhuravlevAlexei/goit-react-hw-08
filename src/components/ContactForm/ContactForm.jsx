@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { contactValSchema } from '../../service/validationSchemas';
 import { contactFormTemplate } from '../../service/formikTemplates/formikTemplates';
 
-import { addContact } from '../../redux/contacts/operartions';
+import { addContact } from '../../redux/contacts/operations';
 import { selectContacts } from '../../redux/contacts/selectors';
 
 const ContactForm = () => {

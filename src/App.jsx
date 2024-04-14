@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
-import { refreshUser } from './redux/auth/operartions';
+import { refreshUser } from './redux/auth/operations';
 import { selectIsRefreshing } from './redux/auth/selectors';
 import Loader from './components/Loader/Loader';
 import Layout from './components/Layout/Layout';
