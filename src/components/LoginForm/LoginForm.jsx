@@ -36,6 +36,9 @@ const LoginForm = () => {
         // email: 'fastal@shine.ua',
         // password: '1234567',
         // username: 'AlexFast',
+        // email: 'TestorRegistrator@shine.ua',
+        // password: '1234567',
+        // username: 'TestorRegistrator',
       }}
       validationSchema={loginValSchema}
       onSubmit={handleSubmit}
